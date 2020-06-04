@@ -4,45 +4,19 @@
 
 {% block body %}
 
-<section class="article">
+<section class="articles">
 
+    {% for article in articles %}
     <article>
-        <h2>Titre de l'article</h2>
-        <div class="metadata">Ecrit le 10/06/2020 à 19:00 dans la catégorie informations</div>
+        <h2>{{ article.title }}</h2>
+        <div class="metadata">Ecrit le {{article.createAT | date('d/m/y')}} à {{ article.createAt | date('h:i') }} dans la catégorie informations</div>
         <div class="content">
-            <img src="http://placehold.it/350x150" alt="">
-            <p>Diuturnum cum Reguli liberis nobilitas Valerius filia cum Publicola pauperis pauperis uxor amicorum florem diuturnum subsidiis</p>
-            <p>Diuturnum cum Reguli liberis nobilitas Valerius filia cum Publicola pauperis pauperis uxor amicorum florem diuturnum subsidiis 
-            Diuturnum cum Reguli liberis nobilitas Valerius filia cum Publicola pauperis pauperis uxor amicorum florem diuturnum subsidiis
-            </p>
-            <a href="{{ path('blog_show') }}" class="btn btn-primary">Lire la suite</a>
+            <img src="{{ article.image }}" alt="">
+            {{ article.content | raw }}
+            <a href="{{ path('blog_show', {'id': article.id}) }}" class="btn btn-primary">Lire la suite</a>
         </div>
     </article>
-    <article>
-        <h2>Titre de l'article</h2>
-        <div class="metadata">Ecrit le 10/06/2020 à 19:00 dans la catégorie informations</div>
-        <div class="content">
-            <img src="http://placehold.it/350x150" alt="">
-            <p>Diuturnum cum Reguli liberis nobilitas Valerius filia cum Publicola pauperis pauperis uxor amicorum florem diuturnum subsidiis</p>
-            <p>Diuturnum cum Reguli liberis nobilitas Valerius filia cum Publicola pauperis pauperis uxor amicorum florem diuturnum subsidiis 
-            Diuturnum cum Reguli liberis nobilitas Valerius filia cum Publicola pauperis pauperis uxor amicorum florem diuturnum subsidiis
-            </p>
-            <a href="{{ path('blog_show') }}" class="btn btn-primary">Lire la suite</a>
-        </div>
-    </article>
-    <article>
-        <h2>Titre de l'article</h2>
-        <div class="metadata">Ecrit le 10/06/2020 à 19:00 dans la catégorie informations</div>
-        <div class="content">
-            <img src="http://placehold.it/350x150" alt="">
-            <p>Diuturnum cum Reguli liberis nobilitas Valerius filia cum Publicola pauperis pauperis uxor amicorum florem diuturnum subsidiis</p>
-            <p>Diuturnum cum Reguli liberis nobilitas Valerius filia cum Publicola pauperis pauperis uxor amicorum florem diuturnum subsidiis 
-            Diuturnum cum Reguli liberis nobilitas Valerius filia cum Publicola pauperis pauperis uxor amicorum florem diuturnum subsidiis
-            </p>
-            <a href="{{ path('blog_show') }}" class="btn btn-primary">Lire la suite</a>
-        </div>
-    </article>
-
+   {% endfor %}
 
 </section>
 
